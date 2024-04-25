@@ -35,3 +35,29 @@ resource "azurerm_subnet_route_table_association" "base" {
     subnet_id      = azurerm_subnet.default-nodepool-subnet.id
     route_table_id = azurerm_route_table.yeah-routetable.id
 }
+
+
+
+
+
+
+
+# resource "azurerm_route_table" "aks"{
+#     name                          = "aks" #var.subnetname
+#     resource_group_name           = data.azurerm_resource_group.aks.name
+#     location                      = data.azurerm_resource_group.aks.location
+#     disable_bgp_route_propagation = false
+
+#     route {
+#             name                    = "default_route"
+#             address_prefix          = "0.0.0.0/0"
+#             next_hop_type           = "VirtualAppliance"
+#             next_hop_in_ip_address  = var.k8svmip
+#     }
+
+#     route {
+#             name                = var.route_name
+#             address_prefix      = var.route_address_prefix
+#             next_hop_type       = var.route_next_hop_type
+#     }
+
