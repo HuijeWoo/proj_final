@@ -21,7 +21,6 @@ resource "azurerm_subnet" "basic_subnet" {
     virtual_network_name = azurerm_virtual_network.vnet.name
     resource_group_name  = azurerm_resource_group.rg.name
     address_prefixes     = [var.azure_basic.subnet_address_prefix]
-    service_endpoints = ["Microsoft.Storage"]
     lifecycle {
       create_before_destroy = true
     }
@@ -30,7 +29,6 @@ resource "azurerm_subnet" "web_subnet" {
     name                 = "${var.azure_name_prefix}_${var.azure_web.prefix}_subnet"
     virtual_network_name = azurerm_virtual_network.vnet.name
     resource_group_name  = azurerm_resource_group.rg.name
-    service_endpoints = ["Microsoft.Storage"]
     address_prefixes     = [var.azure_web.subnet_address_prefix]
     lifecycle {
       create_before_destroy = true

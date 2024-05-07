@@ -3,7 +3,6 @@ resource "aws_vpc" "VPC1" {
     tags = {
         Name = var.aws_vpc_info.name
     }
-    
     lifecycle {
         create_before_destroy = true
     }
@@ -12,13 +11,10 @@ resource "aws_vpc" "VPC1" {
 resource "aws_subnet" "Subnet1" {
     vpc_id     = aws_vpc.VPC1.id
     cidr_block = var.aws_subnet_info.cidr_block
-
     availability_zone = var.aws_location
-
     tags = {
         Name = var.aws_subnet_info.name
     }
-    
     lifecycle {
         create_before_destroy = true
     }
@@ -29,7 +25,6 @@ resource "aws_route_table" "RouteTable1" {
     tags = {
       Name = var.aws_route_table_info.name
     }
-  
     lifecycle {
         create_before_destroy = true
     }
@@ -38,7 +33,6 @@ resource "aws_route_table" "RouteTable1" {
 resource "aws_route_table_association" "RouteAndSub" {
     subnet_id      = aws_subnet.Subnet1.id
     route_table_id = aws_route_table.RouteTable1.id
-  
     lifecycle {
         create_before_destroy = true
     }
@@ -51,7 +45,6 @@ resource "aws_vpn_gateway" "AzureGW" {
     tags = {
       Name = var.aws_vpn_gateway_info.name
     }
-    
     lifecycle {
         create_before_destroy = true
     }
@@ -63,7 +56,6 @@ resource "aws_vpn_gateway" "AzureGW" {
 resource "aws_vpn_gateway_attachment" "AzureGWAttachment" {
     vpc_id         = aws_vpc.VPC1.id
     vpn_gateway_id = aws_vpn_gateway.AzureGW.id
-    
     lifecycle {
         create_before_destroy = true
     }
@@ -72,7 +64,6 @@ resource "aws_vpn_gateway_attachment" "AzureGWAttachment" {
 resource "aws_vpn_gateway_route_propagation" "AzureGWPropagation" {
     vpn_gateway_id = aws_vpn_gateway.AzureGW.id
     route_table_id = aws_route_table.RouteTable1.id
-    
     lifecycle {
         create_before_destroy = true
     }

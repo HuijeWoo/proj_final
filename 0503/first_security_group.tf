@@ -23,14 +23,6 @@ resource "azurerm_application_security_group" "was_asg" {
       create_before_destroy = true
     }
 }
-resource "azurerm_application_security_group" "str_priv_asg" {
-    name                = "${var.azure_name_prefix}_storage_private_asg"
-    location            = azurerm_resource_group.rg.location
-    resource_group_name = azurerm_resource_group.rg.name
-    lifecycle {
-      create_before_destroy = true
-    }
-}
 
 # nsg ##################################################################
 resource "azurerm_network_security_group" "nsg" {
