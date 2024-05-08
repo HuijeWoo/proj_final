@@ -10,7 +10,7 @@ variable "aws_loc"{
 variable "aws_vpc_ip_block" {
     type = string
     description = "cidr block for vpc"
-    default = "10.1.0.0/16"
+    default = "10.2.0.0/16"
 }
 variable "aws_subnet_ip_block_1" {
     type = string

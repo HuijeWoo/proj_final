@@ -2,14 +2,7 @@
 data "azurerm_client_config" "cli_conf" {
 }
 
-resource "azurerm_role_assignment" "role_sa" {
-    scope                = azurerm_storage_account.sa.id
-    role_definition_name = "Storage Account Contributor"
-    principal_id         = data.azurerm_client_config.cli_conf.object_id
-    depends_on = [ 
-        azurerm_storage_account.sa
-    ]
-}
+
 
 # storage account
 resource "azurerm_storage_account" "sa" {
